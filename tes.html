@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Menu</title>
+    <!-- Font Awesome for Icons -->
+  
+    <link rel="stylesheet" href="style.css">
+
+   
+   
+
+    
+</head>
+
+<body>
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+        const dots = document.querySelectorAll('.dot');
+        const items = document.querySelectorAll('.carousel-item');
+        const totalSlides = items.length;
+        let index = 0;
+
+        // Function to move slides
+        function moveSlide(newIndex) {
+            index = newIndex;
+            if (index >= totalSlides) index = 0;
+            if (index < 0) index = totalSlides - 1;
+            track.style.transform = `translateX(-${index * 100}%)`;
+            updateDots();
+        }
+
+        // Auto-scroll every 3 seconds
+        let autoScrollInterval = setInterval(() => moveSlide(index + 1), 3000);
+
+        // Manual navigation
+        nextButton.addEventListener('click', () => {
+            clearInterval(autoScrollInterval);
+            moveSlide(index + 1);
+            autoScrollInterval = setInterval(() => moveSlide(index + 1), 3000);
+        });
+
+        prevButton.addEventListener('click', () => {
+            clearInterval(autoScrollInterval);
+            moveSlide(index - 1);
+            autoScrollInterval = setInterval(() => moveSlide(index + 1), 3000);
+        });
+
+        // Dots navigation
+        dots.forEach((dot) => {
+            dot.addEventListener('click', (e) => {
+                clearInterval(autoScrollInterval);
+                moveSlide(parseInt(e.target.dataset.index));
+                autoScrollInterval = setInterval(() => moveSlide(index + 1), 3000);
+            });
+        });
+
+        // Function to update active dot
+        function updateDots() {
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        // Initialize first dot as active
+        updateDots();
+
+
+    </script>
+    <div class="nav">
+        <div class="search">
+            <a href="#">
+                <img src="icon/manu.png">
+            </a>
+            <h2> Company</h2>
+
+        </div>
+        <div class="home">
+            <img src="logo/images (5).png">
+            <input type="search " placeholder="ស្វែងរក...">
+            <img src="icon/search.png">
+        </div>
+        <div class="user">
+            <div class="m">
+                <a href="#">
+                    <img src="icon/manu.webp">
+                </a>
+            </div>
+            <div class="c">
+                <a href="#">
+                    <img src="icon/chart.png">
+                </a>
+            </div>
+            <div class="s">
+                <button class="noti-btn" id="notiIcon">
+                    <img src="icon/sub.png" alt="Notification">
+                </button>
+            </div>
+
+
+            <div class="notification-container" id="notiBox">
+                <div class="notification unread" onclick="markAsRead(this)">
+                    <div class="dot"></div>
+                    <p>MN GAMER KH was live: "ARK Survival Mod Primal Fear 11"</p>
+                </div>
+                <div class="notification unread" onclick="markAsRead(this)">
+                    <div class="dot"></div>
+                    <p>Sovanachara Ny reacted to your video.</p>
+                </div>
+                <div class="notification unread" onclick="markAsRead(this)">
+                    <div class="dot"></div>
+                    <p>MN GAMER KH shared a reel: "អារម្មណ៍រីករាយ..."</p>
+                </div>
+                <div class="notification unread" onclick="markAsRead(this)">
+                    <div class="dot"></div>
+                    <p>MN GAMER KH shared a reel: "អារម្មណ៍រីករាយ..."</p>
+                </div>
+                <div class="notification unread" onclick="markAsRead(this)">
+                    <div class="dot"></div>
+                    <p>MN GAMER KH shared a reel: "អារម្មណ៍រីករាយ..."</p>
+                </div>
+            </div>
+
+            <script>
+                // Function to show/hide notifications
+                document.getElementById("notiIcon").addEventListener("click", function () {
+                    var notiBox = document.getElementById("notiBox");
+                    notiBox.style.display = (notiBox.style.display === "block") ? "none" : "block";
+                });
+
+                // Function to mark notifications as read
+                function markAsRead(element) {
+                    element.classList.remove('unread');
+                    element.classList.add('read');
+                }
+            </script>
+
+            <div class="u">
+                <a href="profal.html">
+                    <img src="icon/user.png">
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      
+            <label>
+                <input type="checkbox" id="toggle-checkbox">
+             <div class="teggle"></div>
+             
+           
+        
+        <div class="left">
+            <a href="#" class="box">
+                <img src="icon/home.png">
+                <h2>Home</h2>
+            </a>
+            <hr width="100%">
+            <h3>Entity</h3>
+            <a href="home-sport.html" class="box">
+                <img src="icon/sport.png">
+                <h2>Sport</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            <a href="home-electronics.html" class="box">
+                <img src="icon/Electronics.png">
+                <h2>Electronics</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            <a href="home-drink.html" class="box">
+                <img src="icon/drink.png">
+                <h2>Drink</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            <a href="home-car.html" class="box">
+                <img src="icon/car.png">
+                <h2>Cars</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            <a href="#" class="box">
+                <img src="icon/Motorcycle.png">
+                <h2>Motorcycle</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            <a href="#" class="box">
+                <img src="icon/Repair kit.png">
+                <h2>Repair kit</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            <a href="#" class="box">
+                <img src="icon/Ready to learn.png">
+                <h2>Ready learn</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            <a href="#" class="box">
+                <img src="icon/Shoes.png">
+                <h2>Shoes</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            <a href="#" class="box">
+                <img src="icon/Clothes.png">
+                <h2>Clothes</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            <a href="#" class="box">
+                <img src="icon/Bicycle.png">
+                <h2>Bicycle</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            <a href="#" class="box">
+                <img src="icon/Fruit.png">
+                <h2>Fruit</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            <a href="#" class="box">
+                <img src="icon/Lotion.png">
+                <h2>Lotion</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            <a href="#" class="box">
+                <img src="icon/advertising.png">
+                <h2>User Name</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            <a href="#" class="box">
+                <img src="icon/card.png">
+                <h2>Cards</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            <a href="#" class="box">
+                <img src="icon/cado.png">
+                <h2>Birthday</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            <a href="#" class="box">
+                <img src="icon/pade.png">
+                <h2>Pages</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            <a href="#" class="box">
+                <img src="icon/save.png">
+                <h2>Saved</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            <a href="#" class="box">
+                <img src="icon/date.png">
+                <h2>Recent ad activity</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            <hr width="100%">
+            <h2>Your shortcuts</h2>
+            <a href="#" class="box">
+                <img src="icon/pade.png">
+                <h2>User Name</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            <a href="#" class="box">
+                <img src="icon/pade.png">
+                <h2>User Name</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            <a href="#" class="box">
+                <img src="icon/pade.png">
+                <h2>User Name</h2>
+                <div class="ho">
+                    <img src="icon/pint.png">
+                </div>
+            </a>
+            
+        </div>
+    </div>
+
+
+
+    <!-- Toggle Button -->
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="right">
+            <div class="in-center">
+                <div class="container">
+                    <div class="scroll">
+                        <label>
+                        <div class="manu-scrol">
+                            <ul>
+                                <li>
+                                    <a href="index.html" class="hom">
+                                        <img src="icon/inhome.png">Home</a>
+                                </li>
+                                <li>
+                                    <a href="product.html">
+                                        <img src="icon/shop.png"> Shop</a>
+                                    <div class="sub">
+                                        <ul>
+                                            <li><a href="product.html">product</a></li>
+                                            <li><a href="solution.html">Solution</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="services.html">
+                                        <img src="icon/service.png">Services</a>
+
+                                </li>
+                                <li>
+                                    <a href="Promotion.html">
+                                        <img src="icon/promotion.png">Promotion</a>
+                                    <div class="sub">
+                                        <ul>
+                                            <li><a href="#">1</a></li>
+                                            <li><a href="#">1</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="About.html">
+                                        <img src="icon/about.png">About Us</a>
+                                    <div class="sub">
+                                        <ul>
+                                            <li><a href="#">1</a></li>
+                                            <li><a href="#">1</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="profal.html" class="hom1">
+                                        <img src="icon/register.png">Register</a>
+                                    <div class="sub">
+                                        <ul>
+                                            <li><a href="login.html">Login</a></li>
+                                            <li><a href="profal.html">Register</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="carousel">
+                            <button class="carousel-button prev">&#10094;</button>
+                            <div class="carousel-track">
+                                <div class="carousel-item"><img src="advertising/2.jpg" alt="Image 1"></div>
+                                <div class="carousel-item"><img src="advertising/5.png" alt="Image 2"></div>
+                                <div class="carousel-item"><img src="advertising/6.jpg" alt="Image 3"></div>
+                                <div class="carousel-item"><img src="advertising/7.jpg" alt="Image 4"></div>
+                                <div class="carousel-item"><img src="advertising/8.jpg" alt="Image 5"></div>
+                            </div>
+                            <button class="carousel-button next">&#10095;</button>
+                        </div>
+
+
+                        <div class="product">
+                            <div class="j">
+                                <Ul>
+                                    <li>
+                                        <a href="view-product.html">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="re">
+                                                    <img src="icon/buy.png" title="buy now">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/heart-15.png" title="Love">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/look.png" title="look now">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/compar.png" title="compear thi product">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
+                                </Ul>
+                            </div>
+                            <div class="j">
+                                <Ul>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="re">
+                                                    <img src="icon/buy.png" title="buy now">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/heart-15.png" title="Love">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/look.png" title="look now">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/compar.png" title="compear thi product">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
+                                </Ul>
+                            </div>
+                            <div class="j">
+                                <Ul>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="re">
+                                                    <img src="icon/buy.png" title="buy now">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/heart-15.png" title="Love">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/look.png" title="look now">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/compar.png" title="compear thi product">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
+                                </Ul>
+                            </div>
+
+                            <div class="add">
+                                <img src="advertising/9.jpg">
+
+                            </div>
+                            <div class="j">
+                                <Ul>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="re">
+                                                    <img src="icon/buy.png" title="buy now">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/heart-15.png" title="Love">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/look.png" title="look now">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/compar.png" title="compear thi product">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
+                                </Ul>
+                            </div>
+                            <div class="j">
+                                <Ul>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="re">
+                                                    <img src="icon/buy.png" title="buy now">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/heart-15.png" title="Love">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/look.png" title="look now">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/compar.png" title="compear thi product">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
+                                </Ul>
+                            </div>
+                            <div class="j">
+                                <Ul>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="re">
+                                                    <img src="icon/buy.png" title="buy now">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/heart-15.png" title="Love">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/look.png" title="look now">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/compar.png" title="compear thi product">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
+                                </Ul>
+                            </div>
+                            <div class="add">
+                                <img src="advertising/10.jpg">
+
+                            </div>
+                            <div class="j">
+                                <Ul>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="re">
+                                                    <img src="icon/buy.png" title="buy now">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/heart-15.png" title="Love">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/look.png" title="look now">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/compar.png" title="compear thi product">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
+                                </Ul>
+                            </div>
+                            <div class="j">
+                                <Ul>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="re">
+                                                    <img src="icon/buy.png" title="buy now">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/heart-15.png" title="Love">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/look.png" title="look now">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/compar.png" title="compear thi product">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
+                                </Ul>
+                            </div>
+                            <div class="j">
+                                <Ul>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="re">
+                                                    <img src="icon/buy.png" title="buy now">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/heart-15.png" title="Love">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/look.png" title="look now">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/compar.png" title="compear thi product">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
+                                </Ul>
+                            </div>
+                            <div class="j">
+                                <Ul>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="re">
+                                                    <img src="icon/buy.png" title="buy now">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/heart-15.png" title="Love">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/look.png" title="look now">
+                                                </div>
+                                                <div class="re">
+                                                    <img src="icon/compar.png" title="compear thi product">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="photo">
+                                                <img src="computer/1.jpg">
+                                            </div>
+                                            <div class="text">
+                                                <h3>ASUS ROG Zephyrus G14 GA403UV-QS201W ( R9)</h3>
+                                                <h2>$1,699.00 </h2>
+                                            </div>
+                                            <div class="hover">
+                                                <div class="hover">
+                                                    <div class="re">
+                                                        <img src="icon/buy.png" title="buy now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/heart-15.png" title="Love">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/look.png" title="look now">
+                                                    </div>
+                                                    <div class="re">
+                                                        <img src="icon/compar.png" title="compear thi product">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
+                                </Ul>
+                            </div>
+                        </label>
+                            <div class="next-page">
+                                <h2>Showing 1 to 24 of 75 (4 Pages)</h2>
+                                <ul>
+                                    <li>
+                                        <a href="#">Home</a>
+                                        <a href="#">1</a>
+                                        <a href="#">2</a>
+                                        <a href="#">3</a>
+                                        <a href="#">Next</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="footer">
+                                <div class="p1">
+                                    <ol>
+                                        <li>
+                                            <a href="#">
+                                                <h1>Information</h1>
+                                            </a>
+                                            <a href="#">
+                                                <h2>1.Contact & Address</h2>
+                                            </a>
+                                            <a href="#">
+                                                <h2>2.Installment (សេវាកម្មបង់រំលោះ)</h2>
+                                            </a>
+                                            <a href="#">
+                                                <h2>3.Brands</h2>
+                                            </a>
+                                            <a href="#">
+                                                <h2>4.Site Map</h2>
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </div>
+                                <div class="p1">
+                                    <ol>
+                                        <li>
+                                            <a href="#">
+                                                <h1>Email Contacts</h1>
+                                            </a>
+                                            <a href="#">
+                                                <h2>1.product inquiry:
+                                                    <i>simchril@gmail.com</i>
+                                                </h2>
+                                            </a>
+                                            <a href="#">
+                                                <h2>2.For marketing & corporate opportunity:
+                                                    <i> goldonecomputer@gmail.com</i>
+                                                </h2>
+                                            </a>
+                                            <a href="#">
+                                                <h2>3.Brands</h2>
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </div>
+                                <div class="p1">
+                                    <ol>
+                                        <li>
+                                            <a href="#">
+                                                <h1>Shop Address</h1>
+                                            </a>
+                                            <a href="#">
+                                                <h2>
+                                                    <p>1.No. 405-407E0, Kampuchea Krom Blvd. (ST.128) Sangkat Phsar
+                                                        Depor 3, Khan Toul Kork, Phnom Penh, Cambodia.</p>
+                                                </h2>
+                                            </a>
+                                            <a href="#">
+                                                <h2>2.Sales & Service Contacts</h2>
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </div>
+                                <div class="p1">
+                                    <ol>
+                                        <li>
+                                            <a href="#">
+                                                <h1> <abbr> Follow US</abbr></h1>
+                                            </a>
+                                            <div class="logo">
+                                                <img src="logo/images (5).png">
+                                                <img src="logo/chart.jpg">
+                                                <img src="logo/youbube.png">
+                                            </div>
+
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="in-right">
+                    <div class="tite">
+                        <h2>feature product</h2>
+                    </div>
+                    <div class="traler">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <div class="image-traler">
+                                        <img src="computer/2.jpg">
+                                    </div>
+                                    <div class="text-traler">
+                                        <h2>ORICO 8</h2>
+                                        <h3>Support: Windows, Mac OS, Linux</h3>
+                                        <div class="amoun">
+                                            <h4>25$</h4>
+                                        </div>
+                                    </div>
+
+                                </a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <div class="image-traler">
+                                        <img src="computer/2.jpg">
+                                    </div>
+                                    <div class="text-traler">
+                                        <h2>ORICO 8 </h2>
+                                        <h3>Support: Windows, Mac OS, Linux</h3>
+                                        <div class="amoun">
+                                            <h4>25$</h4>
+                                        </div>
+                                    </div>
+
+                                </a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <div class="image-traler">
+                                        <img src="computer/2.jpg">
+                                    </div>
+                                    <div class="text-traler">
+                                        <h2>ORICO 8</h2>
+                                        <h3>Support: Windows, Mac OS, Linux</h3>
+                                        <div class="amoun">
+                                            <h4>25$</h4>
+                                        </div>
+                                    </div>
+
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="in-right-text">
+                        <div class="tite">
+                            <h2>feature product</h2>
+                        </div>
+
+                        <div class="lab">
+                            <h2>Desktop Gaming / Design ( Core Ultra 7 265K / Ram 32GB DDR5 / M.2 PCIe 1TB / ZOTAC RTX
+                                5070Ti Solid 16GB )</h2>
+                        </div>
+                        <div class="image-lab">
+                            <img src="computer/3.jpg">
+                        </div>
+                    </div>
+                    <div class="in-right-text">
+                        <div class="tite">
+                            <h2>feature product</h2>
+                        </div>
+
+                        <div class="lab">
+                            <h2>Desktop Gaming / Design ( Core Ultra 7 265K / Ram 32GB DDR5 / M.2 PCIe 1TB / ZOTAC RTX
+                                5070Ti Solid 16GB )</h2>
+                        </div>
+                        <div class="image-lab">
+                            <img src="computer/3.jpg">
+                        </div>
+                    </div>
+                    <div class="in-right-text">
+                        <div class="tite">
+                            <h2>feature product</h2>
+                        </div>
+
+                        <div class="lab">
+                            <h2>Desktop Gaming / Design ( Core Ultra 7 265K / Ram 32GB DDR5 / M.2 PCIe 1TB / ZOTAC RTX
+                                5070Ti Solid 16GB )</h2>
+                        </div>
+                        <div class="image-lab">
+                            <img src="computer/3.jpg">
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Automatically open the sidebar when the page loads
+        window.onload = function () {
+            const sidebar = document.querySelector(".sidebar");
+            sidebar.classList.add("active");
+
+            // Optional: Adjust body margin when sidebar is active
+            document.body.classList.add("sidebar-active");
+        };
+
+        function toggleSidebar() {
+            const sidebar = document.querySelector(".sidebar");
+            sidebar.classList.toggle("active");
+
+            // Optional: Adjust body margin when sidebar is active
+            document.body.classList.toggle("sidebar-active");
+        }
+
+        function hideSidebar() {
+            const sidebar = document.querySelector(".sidebar");
+            sidebar.classList.remove("active");
+
+            // Optional: Reset body margin when sidebar is hidden
+            document.body.classList.remove("sidebar-active");
+        }
+    </script>
+</body>
+
+</html>
